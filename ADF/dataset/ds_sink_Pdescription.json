@@ -1,0 +1,36 @@
+{
+	"name": "ds_sink_Pdescription",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LNK_sink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "ProductDescriptionID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Description",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "rowguid",
+				"type": "varchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "ProductDescription"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

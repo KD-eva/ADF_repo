@@ -1,0 +1,9 @@
+{
+	"name": "Prabudeva-ADF1",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c293452f-b88e-4822-84ab-6e2abdf7aecd",
+		"tenantId": "e943f83d-2547-41d0-ad41-4a80cc6db061"
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "src_text",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LNK_sink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "name",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sample_tbl"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

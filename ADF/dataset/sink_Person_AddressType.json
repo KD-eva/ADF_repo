@@ -1,0 +1,37 @@
+{
+	"name": "sink_Person_AddressType",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LNK_sink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "AddressTypeID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "rowguid",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "person",
+			"table": "AddressType"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
