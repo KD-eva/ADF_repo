@@ -1,0 +1,45 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "prabhudeva"
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"LNK_src_accountKey": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "devaprabhuserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "prabhuDB"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "devaadmin"
+		},
+		"LNK_src_properties_typeProperties_url": {
+			"value": "https://devastorage12.dfs.core.windows.net/"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "LAPTOP-SDJPCKK7"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "SalesDB"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "DEVA"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
