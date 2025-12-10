@@ -1,0 +1,6 @@
+{
+	"name": "myir",
+	"properties": {
+		"type": "SelfHosted"
+	}
+}
