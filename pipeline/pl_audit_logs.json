@@ -15,6 +15,10 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"dataset": {
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
+					},
 					"fieldList": [
 						"childItems"
 					],
@@ -75,8 +79,41 @@
 									"writeBehavior": "insert",
 									"sqlWriterUseTableLock": false
 								},
-								"enableStaging": false
-							}
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DelimitedText6",
+									"type": "DatasetReference",
+									"parameters": {
+										"x": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "AzureSqlTable19",
+									"type": "DatasetReference",
+									"parameters": {
+										"table": "@substring(   item().name,   add(indexOf(item().name, '_'), 1),   sub(lastIndexOf(item().name, '.'), add(indexOf(item().name, '_'), 1)) )",
+										"schema": {
+											"value": "@substring(item().name,0 ,lastIndexOf(item().name,'_' ))",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						},
 						{
 							"name": "error f",
@@ -120,13 +157,41 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false
-							}
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "DelimitedText7",
+									"type": "DatasetReference",
+									"parameters": {
+										"x": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "DelimitedText8",
+									"type": "DatasetReference"
+								}
+							]
 						}
 					]
 				}
 			}
 		],
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2025-12-10T07:23:36Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
