@@ -17,7 +17,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DelimitedText7",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"x": {
+								"value": "gbb",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"childItems"
@@ -92,13 +98,7 @@
 							"inputs": [
 								{
 									"referenceName": "DelimitedText8",
-									"type": "DatasetReference",
-									"parameters": {
-										"x": {
-											"value": "@item().name",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
