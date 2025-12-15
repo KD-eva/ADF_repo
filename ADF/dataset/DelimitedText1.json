@@ -10,9 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "HumanResources_EmployeeDepartmentHistory.csv",
-				"folderPath": "DEV",
-				"fileSystem": "dev-container"
+				"folderPath": "humanresources",
+				"fileSystem": "devacontainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -21,27 +20,23 @@
 		},
 		"schema": [
 			{
-				"name": "BusinessEntityID",
+				"name": "CustomerID",
 				"type": "String"
 			},
 			{
-				"name": "DepartmentID",
+				"name": "FirstName",
 				"type": "String"
 			},
 			{
-				"name": "ShiftID",
+				"name": "LastName",
 				"type": "String"
 			},
 			{
-				"name": "StartDate",
+				"name": "Country",
 				"type": "String"
 			},
 			{
-				"name": "EndDate",
-				"type": "String"
-			},
-			{
-				"name": "ModifiedDate",
+				"name": "Score",
 				"type": "String"
 			}
 		]

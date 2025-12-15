@@ -6,15 +6,15 @@
 		"type": "SqlServer",
 		"typeProperties": {
 			"server": "LAPTOP-SDJPCKK7",
-			"database": "AdventureWorks2022",
+			"database": "SalesDB",
 			"encrypt": "mandatory",
 			"trustServerCertificate": true,
 			"authenticationType": "SQL",
 			"userName": "DEVA",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2OTM5YTRlMy1jNmMzLTQzOTctOWFlNy04M2RhNDUyMGM4Y2MiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJlMjA3ZjVkMi02Yjc3LTRmM2UtODBlMS0xNWU1M2QyNTM5ZjYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
-			"referenceName": "integrationRuntime2",
+			"referenceName": "myir",
 			"type": "IntegrationRuntimeReference"
 		}
 	}

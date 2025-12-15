@@ -5,13 +5,22 @@
 			"referenceName": "LNK_src",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"x": {
+				"type": "string"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "DEV/sales",
-				"fileSystem": "dev-container"
+				"fileName": {
+					"value": "@dataset().x",
+					"type": "Expression"
+				},
+				"folderPath": "purchasing",
+				"fileSystem": "devacontainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -20,11 +29,43 @@
 		},
 		"schema": [
 			{
-				"name": "CountryRegionCode",
+				"name": "ProductID",
 				"type": "String"
 			},
 			{
-				"name": "CurrencyCode",
+				"name": "BusinessEntityID",
+				"type": "String"
+			},
+			{
+				"name": "AverageLeadTime",
+				"type": "String"
+			},
+			{
+				"name": "StandardPrice",
+				"type": "String"
+			},
+			{
+				"name": "LastReceiptCost",
+				"type": "String"
+			},
+			{
+				"name": "LastReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "MinOrderQty",
+				"type": "String"
+			},
+			{
+				"name": "MaxOrderQty",
+				"type": "String"
+			},
+			{
+				"name": "OnOrderQty",
+				"type": "String"
+			},
+			{
+				"name": "UnitMeasureCode",
 				"type": "String"
 			},
 			{

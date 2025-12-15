@@ -10,9 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "Production_ProductReview.csv",
-				"folderPath": "DEV",
-				"fileSystem": "dev-container"
+				"folderPath": "purchasing",
+				"fileSystem": "devacontainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
@@ -21,31 +20,43 @@
 		},
 		"schema": [
 			{
-				"name": "ProductReviewID",
-				"type": "String"
-			},
-			{
 				"name": "ProductID",
 				"type": "String"
 			},
 			{
-				"name": "ReviewerName",
+				"name": "BusinessEntityID",
 				"type": "String"
 			},
 			{
-				"name": "ReviewDate",
+				"name": "AverageLeadTime",
 				"type": "String"
 			},
 			{
-				"name": "EmailAddress",
+				"name": "StandardPrice",
 				"type": "String"
 			},
 			{
-				"name": "Rating",
+				"name": "LastReceiptCost",
 				"type": "String"
 			},
 			{
-				"name": "Comments",
+				"name": "LastReceiptDate",
+				"type": "String"
+			},
+			{
+				"name": "MinOrderQty",
+				"type": "String"
+			},
+			{
+				"name": "MaxOrderQty",
+				"type": "String"
+			},
+			{
+				"name": "OnOrderQty",
+				"type": "String"
+			},
+			{
+				"name": "UnitMeasureCode",
 				"type": "String"
 			},
 			{

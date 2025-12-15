@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "practiceq",
-				"fileSystem": "dev-container"
+				"folderPath": "error_files",
+				"fileSystem": "devacontainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
