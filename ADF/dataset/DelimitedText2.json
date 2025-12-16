@@ -8,6 +8,9 @@
 		"parameters": {
 			"x": {
 				"type": "string"
+			},
+			"tt": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
