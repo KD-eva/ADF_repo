@@ -11,10 +11,6 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
 		},
-		"LNK_sink_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'LNK_sink'"
-		},
 		"LNK_src_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LNK_src'"
@@ -34,18 +30,6 @@
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "devaadmin"
-		},
-		"LNK_sink_properties_typeProperties_server": {
-			"type": "string",
-			"defaultValue": "prabhudevaserverdev1.database.windows.net"
-		},
-		"LNK_sink_properties_typeProperties_database": {
-			"type": "string",
-			"defaultValue": "prabhudevaserverdev"
-		},
-		"LNK_sink_properties_typeProperties_userName": {
-			"type": "string",
-			"defaultValue": "prabhuadmin"
 		},
 		"LNK_src_properties_typeProperties_url": {
 			"type": "string",
@@ -93,11 +77,11 @@
 					"AzureSqlDatabase1_password": {
 						"value": "[parameters('AzureSqlDatabase1_password')]"
 					},
-					"LNK_sink_password": {
-						"value": "[parameters('LNK_sink_password')]"
-					},
 					"LNK_src_accountKey": {
 						"value": "[parameters('LNK_src_accountKey')]"
+					},
+					"SqlServer1_password": {
+						"value": "[parameters('SqlServer1_password')]"
 					},
 					"AzureSqlDatabase1_properties_typeProperties_server": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
@@ -108,17 +92,17 @@
 					"AzureSqlDatabase1_properties_typeProperties_userName": {
 						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
 					},
-					"LNK_sink_properties_typeProperties_server": {
-						"value": "[parameters('LNK_sink_properties_typeProperties_server')]"
-					},
-					"LNK_sink_properties_typeProperties_database": {
-						"value": "[parameters('LNK_sink_properties_typeProperties_database')]"
-					},
-					"LNK_sink_properties_typeProperties_userName": {
-						"value": "[parameters('LNK_sink_properties_typeProperties_userName')]"
-					},
 					"LNK_src_properties_typeProperties_url": {
 						"value": "[parameters('LNK_src_properties_typeProperties_url')]"
+					},
+					"SqlServer1_properties_typeProperties_server": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"
+					},
+					"SqlServer1_properties_typeProperties_database": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_database')]"
+					},
+					"SqlServer1_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -142,78 +126,6 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'prabhudeva_ArmTemplate_0')]"
-			]
-		},
-		{
-			"name": "prabhudeva_ArmTemplate_2",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2024-03-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'prabhudeva_ArmTemplate_1')]"
-			]
-		},
-		{
-			"name": "prabhudeva_ArmTemplate_3",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2024-03-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_3.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					},
-					"SqlServer1_password": {
-						"value": "[parameters('SqlServer1_password')]"
-					},
-					"SqlServer1_properties_typeProperties_server": {
-						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"
-					},
-					"SqlServer1_properties_typeProperties_database": {
-						"value": "[parameters('SqlServer1_properties_typeProperties_database')]"
-					},
-					"SqlServer1_properties_typeProperties_userName": {
-						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'prabhudeva_ArmTemplate_2')]"
-			]
-		},
-		{
-			"name": "prabhudeva_ArmTemplate_4",
-			"type": "Microsoft.Resources/deployments",
-			"apiVersion": "2024-03-01",
-			"properties": {
-				"mode": "incremental",
-				"templateLink": {
-					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_4.json', parameters('containerSasToken'))]",
-					"contentVersion": "1.0.0.0"
-				},
-				"parameters": {
-					"factoryName": {
-						"value": "[parameters('factoryName')]"
-					}
-				}
-			},
-			"dependsOn": [
-				"[resourceId('Microsoft.Resources/deployments', 'prabhudeva_ArmTemplate_3')]"
 			]
 		}
 	]

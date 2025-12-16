@@ -8,9 +8,6 @@
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
-		"LNK_sink_password": {
-			"value": ""
-		},
 		"LNK_src_accountKey": {
 			"value": ""
 		},
@@ -25,15 +22,6 @@
 		},
 		"AzureSqlDatabase1_properties_typeProperties_userName": {
 			"value": "devaadmin"
-		},
-		"LNK_sink_properties_typeProperties_server": {
-			"value": "prabhudevaserverdev1.database.windows.net"
-		},
-		"LNK_sink_properties_typeProperties_database": {
-			"value": "prabhudevaserverdev"
-		},
-		"LNK_sink_properties_typeProperties_userName": {
-			"value": "prabhuadmin"
 		},
 		"LNK_src_properties_typeProperties_url": {
 			"value": "https://devastorage12.dfs.core.windows.net/"
