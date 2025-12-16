@@ -1,10 +1,6 @@
 {
 	"name": "snk_ds_get_metedata",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "LNK_sink",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"y": {
 				"type": "string"

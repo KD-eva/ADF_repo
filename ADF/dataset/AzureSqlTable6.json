@@ -1,10 +1,6 @@
 {
 	"name": "AzureSqlTable6",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "LNK_sink",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"schema": {
 				"type": "string"
