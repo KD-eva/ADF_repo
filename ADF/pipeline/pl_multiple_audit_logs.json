@@ -232,7 +232,13 @@
 							"outputs": [
 								{
 									"referenceName": "DelimitedText11",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"x": {
+											"value": "@item().name",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
