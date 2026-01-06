@@ -1,0 +1,9 @@
+{
+	"name": "prabhuDatafact",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2ff9ad9d-5791-476d-93ac-93765f2c59d1",
+		"tenantId": "74be3a9a-7456-41fc-8ce9-661ff821bd1f"
+	}
+}
