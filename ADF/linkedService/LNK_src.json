@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://prabhustorage40.dfs.core.windows.net/",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDgyQkEzRTM4LUUyNUMtNDZGOS04Q0FGLTJBNDU1QUNGMUY1RV9mNmEzYzE2YS01ZTQ0LTRhMjUtODBlMy1kNzRhZjgxYWMyZWIiDQp9"
+			"url": "https://prabhustorage.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDgyQkEzRTM4LUUyNUMtNDZGOS04Q0FGLTJBNDU1QUNGMUY1RV80NTUxOTU4Ny05YmQ2LTQ1MTMtODhhZi02OWU3OTViNDM2NTIiDQp9"
 		}
 	}
 }
