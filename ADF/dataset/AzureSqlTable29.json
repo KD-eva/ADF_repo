@@ -1,0 +1,24 @@
+{
+	"name": "AzureSqlTable29",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tab": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "purchasing",
+			"table": {
+				"value": "@dataset().tab",
+				"type": "Expression"
+			}
+		}
+	}
+}
