@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"folderPath": "humanresources",
-				"fileSystem": "devacontainer"
+				"fileSystem": "devastorage"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
