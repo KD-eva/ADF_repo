@@ -1,0 +1,41 @@
+{
+	"name": "DelimitedText26",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LNK_src",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"zx": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().zx",
+					"type": "Expression"
+				},
+				"folderPath": "errorfiles",
+				"fileSystem": "devastorage"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FileName",
+				"type": "String"
+			},
+			{
+				"name": "RowCount",
+				"type": "String"
+			}
+		]
+	}
+}
