@@ -1109,12 +1109,7 @@
 										{
 											"referenceName": "AzureSqlTable34",
 											"type": "DatasetReference",
-											"parameters": {
-												"z": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
+											"parameters": {}
 										}
 									],
 									"outputs": [
@@ -2176,21 +2171,10 @@
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
 				},
-				"parameters": {
-					"z": {
-						"type": "string"
-					}
-				},
 				"annotations": [],
 				"type": "AzureSqlTable",
 				"schema": [],
-				"typeProperties": {
-					"schema": "purchasing",
-					"table": {
-						"value": "@dataset().z",
-						"type": "Expression"
-					}
-				}
+				"typeProperties": {}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"

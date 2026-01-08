@@ -1497,12 +1497,7 @@
 										{
 											"referenceName": "AzureSqlTable34",
 											"type": "DatasetReference",
-											"parameters": {
-												"z": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
+											"parameters": {}
 										}
 									],
 									"outputs": [
