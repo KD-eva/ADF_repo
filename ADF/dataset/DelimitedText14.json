@@ -10,9 +10,9 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "example.csv",
-				"folderPath": "new",
-				"fileSystem": "devacontainer"
+				"fileName": "humanresources",
+				"folderPath": "new2new",
+				"fileSystem": "devastorage"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

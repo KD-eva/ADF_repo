@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText15",
+	"name": "DelimitedText27",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "LNK_src",
@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "humanresources",
 				"folderPath": "new2new",
 				"fileSystem": "devastorage"
 			},
@@ -21,19 +20,11 @@
 		},
 		"schema": [
 			{
-				"name": "id",
+				"name": "FileName",
 				"type": "String"
 			},
 			{
-				"name": "name",
-				"type": "String"
-			},
-			{
-				"name": "rollno",
-				"type": "String"
-			},
-			{
-				"name": "branch ",
+				"name": "RowCount",
 				"type": "String"
 			}
 		]
