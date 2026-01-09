@@ -371,8 +371,8 @@
 					}
 				],
 				"typeProperties": {
-					"schema": "dbo",
-					"table": "students"
+					"schema": "humanresources",
+					"table": "summary"
 				}
 			},
 			"dependsOn": [
