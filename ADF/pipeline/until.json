@@ -53,7 +53,7 @@
 										"userProperties": [],
 										"typeProperties": {
 											"variableName": "DataVariable",
-											"value": "true"
+											"value": true
 										}
 									}
 								]
@@ -81,6 +81,7 @@
 								],
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
+									"recursive": true,
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -154,8 +155,8 @@
 		],
 		"variables": {
 			"DataVariable": {
-				"type": "String",
-				"defaultValue": "true"
+				"type": "Boolean",
+				"defaultValue": true
 			}
 		},
 		"annotations": []
