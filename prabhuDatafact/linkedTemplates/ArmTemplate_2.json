@@ -1747,7 +1747,7 @@
 												"userProperties": [],
 												"typeProperties": {
 													"variableName": "DataVariable",
-													"value": "true"
+													"value": true
 												}
 											}
 										]
@@ -1855,8 +1855,8 @@
 				},
 				"variables": {
 					"DataVariable": {
-						"type": "String",
-						"defaultValue": "true"
+						"type": "Boolean",
+						"defaultValue": true
 					}
 				},
 				"annotations": []
