@@ -171,7 +171,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/logic app email2')]",
+			"name": "[concat(parameters('factoryName'), '/logic app email succes_fail')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -194,6 +194,8 @@
 								"storeSettings": {
 									"type": "AzureBlobFSReadSettings",
 									"recursive": true,
+									"wildcardFolderPath": "error",
+									"wildcardFileName": "*bn",
 									"enablePartitionDiscovery": false
 								},
 								"formatSettings": {
@@ -201,15 +203,9 @@
 								}
 							},
 							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
+								"type": "AzureSqlSink",
+								"writeBehavior": "insert",
+								"sqlWriterUseTableLock": false
 							},
 							"enableStaging": false,
 							"translator": {
@@ -223,49 +219,91 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "DelimitedText29",
+								"referenceName": "DelimitedText35",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "DelimitedText30",
+								"referenceName": "AzureSqlTable37",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
 						]
 					},
 					{
-						"name": "Web1",
-						"type": "WebActivity",
+						"name": "If Condition1",
+						"type": "IfCondition",
 						"dependsOn": [
 							{
 								"activity": "Copy data1",
 								"dependencyConditions": [
+									"Succeeded",
 									"Failed"
 								]
 							}
 						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
 						"userProperties": [],
 						"typeProperties": {
-							"method": "POST",
-							"headers": {},
-							"url": {
-								"value": "https://prod-14.centralindia.logic.azure.com:443/workflows/53a6c0e5da4a494389b23ba4ccb64899/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=AB5HDbCItn3sTm6aZ1zmVlwitvm3HDY6Rj4gCn_66JE",
+							"expression": {
+								"value": "@equals(activity('Copy data1').Status,'Succeeded')",
 								"type": "Expression"
 							},
-							"body": {
-								"value": "{\n     \"PipelineName\": \"@(pipeline(). Pipeline)\",\n     \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n     \"RunIDs\": \"@{pipeline().RunId}\",\n     \"ErrorMessage\": \"@{activity('Copy data1').output.errors[0].Message}\"\n}",
-								"type": "Expression"
-							}
+							"ifFalseActivities": [
+								{
+									"name": "Web2",
+									"type": "WebActivity",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"method": "POST",
+										"headers": {},
+										"url": {
+											"value": "https://prod-14.centralindia.logic.azure.com:443/workflows/53a6c0e5da4a494389b23ba4ccb64899/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=AB5HDbCItn3sTm6aZ1zmVlwitvm3HDY6Rj4gCn_66JE",
+											"type": "Expression"
+										},
+										"body": {
+											"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"dataFactory\": \"@{pipeline().DataFactory}\",\n  \"runId\": \"@{pipeline().RunId}\",\n\n  \"activityName\": \"Copy data1\",\n  \"status\": \"@{activity('Copy data1').Status}\",\n\n  \"errorMessage\": \"@{if(equals(activity('Copy data1').Status,'Failed'), activity('Copy data1').Error.message, 'Pipeline executed successfully')}\"\n}",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"ifTrueActivities": [
+								{
+									"name": "Web1",
+									"type": "WebActivity",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"method": "POST",
+										"headers": {},
+										"url": {
+											"value": "https://prod-14.centralindia.logic.azure.com:443/workflows/53a6c0e5da4a494389b23ba4ccb64899/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=AB5HDbCItn3sTm6aZ1zmVlwitvm3HDY6Rj4gCn_66JE",
+											"type": "Expression"
+										},
+										"body": {
+											"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"dataFactory\": \"@{pipeline().DataFactory}\",\n  \"runId\": \"@{pipeline().RunId}\",\n\n  \"activityName\": \"Copy data1\",\n  \"status\": \"@{activity('Copy data1').Status}\",\n\n  \"errorMessage\": \"@{if(equals(activity('Copy data1').Status,'Failed'), activity('Copy data1').Error.message, 'Pipeline executed successfully')}\"\n}",
+											"type": "Expression"
+										}
+									}
+								}
+							]
 						}
 					}
 				],
@@ -275,117 +313,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DelimitedText29')]",
-				"[concat(variables('factoryId'), '/datasets/DelimitedText30')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/logic app1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "prabhu",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "DelimitedText29",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "DelimitedText30",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					},
-					{
-						"name": "Web1",
-						"type": "WebActivity",
-						"dependsOn": [
-							{
-								"activity": "prabhu",
-								"dependencyConditions": [
-									"Failed"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"method": "POST",
-							"headers": {},
-							"url": {
-								"value": "https://prod-02.centralindia.logic.azure.com:443/workflows/ad9f45acc9da43f784ee89cc1e53d0fc/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=TPUOfifQBPgS9IK8Q-aAdHxau2STrTQt69HGQCSa5Y0",
-								"type": "Expression"
-							},
-							"body": {
-								"value": "{\n     \"PipelineName\": \"@(pipeline(). Pipeline)\",\n     \"DataFactoryName\": \"@{pipeline().DataFactory}\",\n     \"RunIDs\": \"@{pipeline().RunId}\",\n     \"ErrorMessage\": \"@{activity('prabhu').output.errors[0].Message}\"\n}",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DelimitedText29')]",
-				"[concat(variables('factoryId'), '/datasets/DelimitedText30')]"
+				"[concat(variables('factoryId'), '/datasets/DelimitedText35')]",
+				"[concat(variables('factoryId'), '/datasets/AzureSqlTable37')]"
 			]
 		},
 		{
@@ -2507,6 +2436,67 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable36')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "emp"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlTable37')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "fileName",
+						"type": "varchar"
+					},
+					{
+						"name": "source_count",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "sink_count",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "status",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "humanresources",
+					"table": "Department"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DelimitedText1')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -3782,34 +3772,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DelimitedText30')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LNK_src",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "new2new",
-						"fileSystem": "devastorage"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/LNK_src')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/DelimitedText31')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -3872,6 +3834,61 @@
 						"fileName": "name(1).txt",
 						"folderPath": "new2new",
 						"fileSystem": "devastorage"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LNK_src')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText34')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LNK_src",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileSystem": "devastor"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/LNK_src')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DelimitedText35')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "LNK_src",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "errorfile",
+						"fileSystem": "devastor"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
