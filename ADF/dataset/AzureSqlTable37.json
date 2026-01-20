@@ -1,0 +1,35 @@
+{
+	"name": "AzureSqlTable37",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "fileName",
+				"type": "varchar"
+			},
+			{
+				"name": "source_count",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "sink_count",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "status",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "humanresources",
+			"table": "Department"
+		}
+	}
+}

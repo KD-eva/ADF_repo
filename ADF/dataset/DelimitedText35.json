@@ -1,0 +1,23 @@
+{
+	"name": "DelimitedText35",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LNK_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "errorfile",
+				"fileSystem": "devastor"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
