@@ -1,0 +1,105 @@
+{
+	"name": "DelimitedText36",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LNK_src",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "em",
+				"folderPath": "errorfile",
+				"fileSystem": "devastor"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "DataFactory_Name",
+				"type": "String"
+			},
+			{
+				"name": "Pipeline_Name",
+				"type": "String"
+			},
+			{
+				"name": "RunId",
+				"type": "String"
+			},
+			{
+				"name": "Source",
+				"type": "String"
+			},
+			{
+				"name": "TriggerType",
+				"type": "String"
+			},
+			{
+				"name": "TriggerId",
+				"type": "String"
+			},
+			{
+				"name": "TriggerName",
+				"type": "String"
+			},
+			{
+				"name": "TriggerTime",
+				"type": "String"
+			},
+			{
+				"name": "rowsCopied",
+				"type": "String"
+			},
+			{
+				"name": "RowsRead",
+				"type": "String"
+			},
+			{
+				"name": "No_ParallelCopies",
+				"type": "String"
+			},
+			{
+				"name": "copyDuration_in_secs",
+				"type": "String"
+			},
+			{
+				"name": "effectiveIntegrationRuntime",
+				"type": "String"
+			},
+			{
+				"name": "Source_Type",
+				"type": "String"
+			},
+			{
+				"name": "Sink_Type",
+				"type": "String"
+			},
+			{
+				"name": "Execution_Status",
+				"type": "String"
+			},
+			{
+				"name": "CopyActivity_Start_Time",
+				"type": "String"
+			},
+			{
+				"name": "CopyActivity_End_Time",
+				"type": "String"
+			},
+			{
+				"name": "CopyActivity_queuingDuration_in_secs",
+				"type": "String"
+			},
+			{
+				"name": "CopyActivity_transferDuration_in_secs",
+				"type": "String"
+			}
+		]
+	}
+}

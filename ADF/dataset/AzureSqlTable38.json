@@ -1,0 +1,22 @@
+{
+	"name": "AzureSqlTable38",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase2",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"dbname": {
+					"value": "practice_db",
+					"type": "Expression"
+				}
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "emp"
+		}
+	}
+}
