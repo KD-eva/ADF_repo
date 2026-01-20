@@ -931,6 +931,80 @@
 								}
 							]
 						}
+					},
+					{
+						"name": "If Condition1",
+						"type": "IfCondition",
+						"dependsOn": [
+							{
+								"activity": "ForEach1",
+								"dependencyConditions": [
+									"Succeeded",
+									"Failed"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"expression": {
+								"value": "@equals(activity('Copy data1').Status,'Succeeded')",
+								"type": "Expression"
+							},
+							"ifFalseActivities": [
+								{
+									"name": "Web2",
+									"type": "WebActivity",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"method": "POST",
+										"headers": {},
+										"url": {
+											"value": "https://prod-14.centralindia.logic.azure.com:443/workflows/53a6c0e5da4a494389b23ba4ccb64899/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=AB5HDbCItn3sTm6aZ1zmVlwitvm3HDY6Rj4gCn_66JE",
+											"type": "Expression"
+										},
+										"body": {
+											"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"dataFactory\": \"@{pipeline().DataFactory}\",\n  \"runId\": \"@{pipeline().RunId}\",\n\n  \"activityName\": \"Copy data1\",\n  \"status\": \"@{activity('Copy data1').Status}\",\n\n  \"errorMessage\": \"@{if(equals(activity('Copy data1').Status,'Failed'), activity('Copy data1').Error.message, 'Pipeline executed successfully')}\"\n}",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"ifTrueActivities": [
+								{
+									"name": "Web1",
+									"type": "WebActivity",
+									"dependsOn": [],
+									"policy": {
+										"timeout": "0.12:00:00",
+										"retry": 0,
+										"retryIntervalInSeconds": 30,
+										"secureOutput": false,
+										"secureInput": false
+									},
+									"userProperties": [],
+									"typeProperties": {
+										"method": "POST",
+										"headers": {},
+										"url": {
+											"value": "https://prod-14.centralindia.logic.azure.com:443/workflows/53a6c0e5da4a494389b23ba4ccb64899/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=AB5HDbCItn3sTm6aZ1zmVlwitvm3HDY6Rj4gCn_66JE",
+											"type": "Expression"
+										},
+										"body": {
+											"value": "{\n  \"pipelineName\": \"@{pipeline().Pipeline}\",\n  \"dataFactory\": \"@{pipeline().DataFactory}\",\n  \"runId\": \"@{pipeline().RunId}\",\n\n  \"activityName\": \"Copy data1\",\n  \"status\": \"@{activity('Copy data1').Status}\",\n\n  \"errorMessage\": \"@{if(equals(activity('Copy data1').Status,'Failed'), activity('Copy data1').Error.message, 'Pipeline executed successfully')}\"\n}",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
 					}
 				],
 				"policy": {
