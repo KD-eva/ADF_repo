@@ -14,6 +14,9 @@
 		"LNK_src_accountKey": {
 			"value": ""
 		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://deva-valut.vault.azure.net/"
+		},
 		"AzureSqlDatabase1_properties_typeProperties_server": {
 			"value": "prabhudevaserverdev.database.windows.net"
 		},
@@ -30,6 +33,15 @@
 			"value": "@{linkedService().dbname}"
 		},
 		"AzureSqlDatabase2_properties_typeProperties_userName": {
+			"value": "deva"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_server": {
+			"value": "prabhudevaserverdev.database.windows.net"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_database": {
+			"value": "practice_db"
+		},
+		"AzureSqlDatabase3_properties_typeProperties_userName": {
 			"value": "deva"
 		},
 		"LNK_src_properties_typeProperties_url": {
