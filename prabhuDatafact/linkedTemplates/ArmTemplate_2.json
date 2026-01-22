@@ -1050,7 +1050,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/DelimitedText9')]",
+			"name": "[concat(parameters('factoryName'), '/DelimitedText37')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1063,9 +1063,9 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "new 8.txt",
+						"fileName": "humanresourcesDepartment.csv",
 						"folderPath": "new",
-						"fileSystem": "devacontainer"
+						"fileSystem": "devastorage"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -1074,23 +1074,19 @@
 				},
 				"schema": [
 					{
-						"name": "id",
+						"name": "DepartmentID",
 						"type": "String"
 					},
 					{
-						"name": "name",
+						"name": "Name",
 						"type": "String"
 					},
 					{
-						"name": "rollno",
+						"name": "GroupName",
 						"type": "String"
 					},
 					{
-						"name": "mobileno",
-						"type": "String"
-					},
-					{
-						"name": "email",
+						"name": "ModifiedDate",
 						"type": "String"
 					}
 				]
